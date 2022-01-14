@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
-import CardPage from './Pages/CardPage'
+import InicialPage from './Pages/InicialPage'
+import Card from './Components/Card';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CardPage />
+    <InicialPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
