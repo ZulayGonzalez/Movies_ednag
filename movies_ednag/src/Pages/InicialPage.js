@@ -1,52 +1,62 @@
-import React from 'react'
-import CardPage from './CardPage'
+import React, { useState, useEffect, useContext } from 'react';
+import Card from '../Components/Card';
+import Axios from "axios";
+import UseContext from '../Components/UseContext'
+
 
 const InicialPage = () => {
+
+    // const useMovieContext= useContext(UseContext)
+    // const {mov}=useMovieContext;
+
+    const [movies, setMovies] = useState({});
+
+    useEffect(() => {
+        Axios.get(
+            "https://api.themoviedb.org/4/list/1?api_key=dce6b909b6d767d7dfa7728cc3974829"
+        )
+            .then((response) => {
+                setMovies(response.data.results);
+                console.log(response.data.results);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+
     return (
         <>
+            <div clasname="container-fluid">
+                <div clasname="row">
+                    <div clasname="col-md-12">
+                        <div clasname="jumbotron card card-block">
+                            <h2>
+                                Movies Ednag
+                            </h2>
+                        </div>
 
 
-            <div className="col-md-12">
-                <h3 className="text-center">
-                    Titulo Pagina Inicial
-                </h3>
 
-                <div className="row">
-                    <div className="col-md-4 card">
-                        <CardPage />
-                    </div>
-                    <div className="col-md-4 card">
-                        <CardPage />
-                    </div>
-                    <div className="col-md-4 card">
-                        <CardPage />
+                        <div clasname="row">
+                            {movies.length > 0 && movies.map((value) => (
+                                <>
+
+                                    <div clasname="col-md-4">
+                                        <h3>
+                                            {value.title}
+                                        </h3>
+                                    </div>
+
+
+                                </>
+                            ))}
+
+
+                        </div>
+
                     </div>
                 </div>
-
-
-
-
-
-                <nav className="pagination-sm">
-                    <ul className="pagination">
-                        <li className="page-item">
-                            <a className="page-link" href="#">Previous</a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#">1</a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#">2</a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#">3</a>
-                        </li>
-
-                        <li className="page-item">
-                            <a className="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
 
         </>
