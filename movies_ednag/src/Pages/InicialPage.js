@@ -44,7 +44,7 @@ const InicialPage = () => {
 
                                     <div clasname="col-md-4">
                                         <h3>
-                                            {value.title}
+                                           <Card movie={value} />
                                         </h3>
                                     </div>
 

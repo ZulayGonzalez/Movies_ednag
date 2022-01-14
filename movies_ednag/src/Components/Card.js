@@ -6,38 +6,38 @@ import UseContext from './UseContext'
 import DetalleMovie from './DetalleMovie';
 import { getValue } from '@testing-library/user-event/dist/utils';
 
-const Card = ({movie}) => {
+const Card = ({ movie }) => {
 
 
-    const { setMovie } = useContext
+    // const { setMovie } = useContext
 
-    const handleMovie = (movie) => {
-        setMovie(movie)
-    }
+    // const handleMovie = (movie) => {
+    //     setMovie(movie)
+    // }
 
 
     return (
         <>
-    
+
 
             <div className="container-fluid">
                 <div className="row">
 
-                    <div  className="col-sd-3 card" >
-                              <img
-                            src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
+                    <div className="col-sd-3 card" >
+                        <img
+                            src={movie.backdrop_path}
                             height={150} width={150}
                         />
                         <h3>
-                            titulo
+                            {movie.title}
                         </h3>
                         <h3>
-                            año
+                            {movie.release_date}
                         </h3>
 
                         <p>
 
-                            <button  onClick={()=> handleMovie(movie)}>
+                            <button >
                                 Detalle
                             </button>
 

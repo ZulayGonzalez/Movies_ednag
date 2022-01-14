@@ -8,7 +8,7 @@ import Card from './Components/Card';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Card />
+    <InicialPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
