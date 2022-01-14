@@ -1,0 +1,10 @@
+.card {
+    text-align: center;
+  }
+
+body{
+padding: 70px;
+background-color: gainsboro;
+margin: gray;
+border: 1px solid black;
+}
