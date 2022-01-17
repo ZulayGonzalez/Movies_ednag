@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Card from '../Components/Card';
 import Axios from "axios";
-import UseContext from '../Components/UseContext'
+import UseContext from '../UseContext'
+import Titulo from '../Components/Titulo';
+
 
 
 const InicialPage = () => {
 
-    // const useMovieContext= useContext(UseContext)
-    // const {mov}=useMovieContext;
-
     const [movies, setMovies] = useState({});
+
+    const [cont, setcont] = useState(4)
 
     useEffect(() => {
         Axios.get(
-            "https://api.themoviedb.org/4/list/1?api_key=dce6b909b6d767d7dfa7728cc3974829"
+            `https://api.themoviedb.org/4/list/${cont}?api_key=dce6b909b6d767d7dfa7728cc3974829`
         )
             .then((response) => {
                 setMovies(response.data.results);
@@ -22,44 +23,49 @@ const InicialPage = () => {
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }, [cont]);
+
+
+    const nextPage = () => {
+        setcont(cont + 1)
+    }
+
 
 
     return (
-        <>
-            <div clasname="container-fluid">
-                <div clasname="row">
-                    <div clasname="col-md-12">
-                        <div clasname="jumbotron card card-block">
-                            <h2>
-                                Movies Ednag
-                            </h2>
-                        </div>
 
+        <div class="container-fluid">
+            <Titulo titulo={"principal"} url={"/"} />
 
+            <div class="row">
+                {movies.length > 0 && movies.map((value, key) => (
 
-                        <div clasname="row">
-                            {movies.length > 0 && movies.map((value) => (
-                                <>
-
-                                    <div clasname="col-md-4">
-                                        <h3>
-                                           <Card movie={value} />
-                                        </h3>
-                                    </div>
-
-
-                                </>
-                            ))}
-
-
-                        </div>
-
+                    <div class="col-md-4">
+                        <Card movie={value} />
                     </div>
-                </div>
+
+
+                ))}
+
             </div>
 
-        </>
+            <ul class="pagination">
+
+
+                <li><a href="javascript:void(0)" onClick={() => nextPage()}>next</a></li>
+
+
+
+
+            </ul>
+        </div>
+
+
+
+
+
+
+
     )
 }
 

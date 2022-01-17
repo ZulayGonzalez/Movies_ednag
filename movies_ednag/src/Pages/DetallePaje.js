@@ -1,25 +1,27 @@
 import React, { useContext } from 'react'
-import DetalleMovie from '../Components/DetalleMovie'
-import UseContext from '../Components/UseContext'
+import CardDetalle from '../Components/CardDetalle'
+import DetalleMovie from '../Components/CardDetalle'
+import Titulo from '../Components/Titulo'
+import UseContext from '../UseContext'
 
 const DetallePaje = () => {
-    const movieContext = useContext(UseContext)
-    const { setMovie } = movieContext
+    const movies = useContext(UseContext)
+    const { movie } = movies
 
-
+    console.log(movies)
     return (
         <>
+            <Titulo titulo={"detalle"} url={"/"} />
             <div className="col-md-12">
                 <div className="row">
-                    <h3 className="text-center">
-                        Titulo Pagina Detalle
-                    </h3>
-                    <div className="row">
 
-                        <div className="col-md-8 card">
-                            <DetalleMovie />
-                        </div>
+
+                    <div class="col-md-4">
+                        <CardDetalle movie={movie} />
                     </div>
+
+
+
                 </div>
             </div>
 

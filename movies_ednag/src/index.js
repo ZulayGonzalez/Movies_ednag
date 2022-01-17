@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 
 import reportWebVitals from './reportWebVitals';
-import InicialPage from './Pages/InicialPage'
-import Card from './Components/Card';
+import Rutas from './Rutas';
 
 ReactDOM.render(
   <React.StrictMode>
-    <InicialPage />
+    <Rutas/>
   </React.StrictMode>,
   document.getElementById('root')
 );

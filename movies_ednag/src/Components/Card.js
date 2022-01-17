@@ -1,20 +1,20 @@
-import React, { useContext } from 'react';
-import { Link, Route } from "react-router-dom";
-
-
-import UseContext from './UseContext'
-import DetalleMovie from './DetalleMovie';
-import { getValue } from '@testing-library/user-event/dist/utils';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import UseContext from '../UseContext';
+import "../Card.css"
+// import { Link, Route } from "react-router-dom";
+//import UseContext from './UseContext'
+import DetalleMovie from './CardDetalle';
+// import { getValue } from '@testing-library/user-event/dist/utils';
 
 const Card = ({ movie }) => {
 
+    const useMovieContext = useContext(UseContext)
+    const { setMovie } = useMovieContext;
 
-    // const { setMovie } = useContext
-
-    // const handleMovie = (movie) => {
-    //     setMovie(movie)
-    // }
-
+    const handleMovie = (movie) => {
+        setMovie(movie)
+    }
 
     return (
         <>
@@ -23,27 +23,21 @@ const Card = ({ movie }) => {
             <div className="container-fluid">
                 <div className="row">
 
-                    <div className="col-sd-3 card" >
-                        <img
-                            src={movie.backdrop_path}
-                            height={150} width={150}
-                        />
-                        <h3>
-                            {movie.title}
-                        </h3>
-                        <h3>
-                            {movie.release_date}
-                        </h3>
 
-                        <p>
 
-                            <button >
-                                Detalle
-                            </button>
+                    <div class="card">
+                        <a href="#">
+                            <img class="card-img-top" src={`https://image.tmdb.org/t/p/w500/` + movie.backdrop_path} alt="Card image cap" />
+                            <div class="card-body">
+                                <h5 class="card-title">{movie.title}</h5>
 
-                        </p>
+                                <p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt"></i>{movie.release_date}</small></p>
+                                <Link to="/detalle-page" onClick={() => handleMovie(movie)}>
+                                    Detalle
+                                </Link>
+                            </div>
+                        </a>
                     </div>
-
 
                 </div>
 
