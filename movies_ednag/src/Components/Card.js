@@ -25,18 +25,18 @@ const Card = ({ movie }) => {
 
 
 
-                    <div class="card">
-                        <a href="#">
-                            <img class="card-img-top" src={`https://image.tmdb.org/t/p/w500/` + movie.backdrop_path} alt="Card image cap" />
-                            <div class="card-body">
-                                <h5 class="card-title">{movie.title}</h5>
+                    <div className="card">
 
-                                <p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt"></i>{movie.release_date}</small></p>
-                                <Link to="/detalle-page" onClick={() => handleMovie(movie)}>
-                                    Detalle
-                                </Link>
-                            </div>
-                        </a>
+                        <img className="card-img-top" src={`https://image.tmdb.org/t/p/w500/` + movie.backdrop_path} alt="Card image cap" />
+                        <div className="card-body">
+                            <h5 className="card-title">{movie.title}</h5>
+
+                            <p className="card-text"><small className="text-muted"><i className="fas fa-calendar-alt"></i>{movie.release_date}</small></p>
+                            <Link to="/detalle-page" onClick={() => handleMovie(movie)}>
+                                Detalle
+                            </Link>
+                        </div>
+
                     </div>
 
                 </div>

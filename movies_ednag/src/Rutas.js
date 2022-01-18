@@ -6,6 +6,7 @@ import UseContext from './UseContext';
 import { useState } from 'react';
 import NoFound from './Pages/NoFound';
 import Titulo from './Components/Titulo';
+import Card from './Components/Card';
 
 const Rutas = () => {
 
