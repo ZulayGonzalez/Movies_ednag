@@ -3,69 +3,56 @@ import Card from '../Components/Card';
 import Axios from "axios";
 import UseContext from '../UseContext'
 import Titulo from '../Components/Titulo';
-import "../Card.css"
-
-
+// import "../Card.css";
 const InicialPage = () => {
 
-    const [movies, setMovies] = useState({});
-
-    const [cont, setcont] = useState(4)
-
+    const [movies, setMovies] = useState([]);
+    const [cont, setcont] = useState(1)
     useEffect(() => {
-        Axios.get(
-            `https://api.themoviedb.org/3/list/${cont}?api_key=dce6b909b6d767d7dfa7728cc3974829`
-        )
+        Axios.get
+            // fetch
+            (
+                `http://127.0.0.1:4000/upcoming`
+            )
             .then((response) => {
-                setMovies(response.data.items);
-                console.log(response.data.items);
+                setMovies(response.data);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, [cont]);
-
-
+    },
+        []
+    );
     const nextPage = () => {
         setcont(cont + 1)
     }
+  
 
-
+ 
 
     return (
-
         <div className="container-fluid">
             <Titulo titulo={"principal"} url={"/"} />
-
             <div className="row">
                 {movies.length > 0 && movies.map((value, key) => (
 
-                    <div key={key} className="col-md-4">
-                        <Card movie={value} />
-                    </div>
-
-
+                    <>
+                    
+                    <p style={{ color: 'white' }}>{value.title}</p>
+                    
+                    { value.gener.map((genero, key) => (
+                        <p style={{ color: 'red' }}>{genero}</p>
+                        // <div key={key} className="col-md-4">
+                        //     <Card movie={value} />
+                        // </div>
+                    ))}
+                    </>
                 ))}
-
             </div>
-
-            <ul className="pagination">
-
-
+            {/* <ul className="pagination">
                 <button onClick={() => nextPage()}>next</button>
-
-
-
-
-            </ul>
+            </ul> */}
         </div>
-
-
-
-
-
-
-
     )
 }
 

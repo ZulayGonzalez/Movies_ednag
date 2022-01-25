@@ -27,11 +27,11 @@ const Card = ({ movie }) => {
 
                     <div className="card">
 
-                        <img className="card-img-top" src={`https://image.tmdb.org/t/p/w500/` + movie.backdrop_path} alt="Card image cap" />
+                        <img className="card-img-top" src={`https://image.tmdb.org/t/p/w500/` + movie.img} alt="Card image cap" />
                         <div className="card-body">
                             <h5 className="card-title">{movie.title}</h5>
 
-                            <p className="card-text"><small className="text-muted"><i className="fas fa-calendar-alt"></i>{movie.release_date}</small></p>
+                            <p className="card-text"><small className="text-muted"><i className="fas fa-calendar-alt"></i>{movie.date}</small></p>
                             <Link to="/detalle-page" onClick={() => handleMovie(movie)}>
                                 Detalle
                             </Link>
